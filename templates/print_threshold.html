@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<title> FRAUD DETECTION</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="/static/styles/base_style.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript"  src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+<!--<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>-->
+<!--<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+
+<head>
+	<title>Web Application</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ABOUT</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">CONTACT</a>
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1800px">
+
+
+<script>
+$(document).ready(function(){
+    $('#table_content_1').dataTable({"columns": [ {"searchable": true},{"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}],
+    "scrollX": true,
+    "scrollY": 50});
+    $('.dataTables_length').addClass('bs-select');
+});
+
+$(document).ready(function(){
+    $('#table_content_2').dataTable({"columns": [ {"searchable": true},{"searchable": false},
+    {"searchable": false}, {"searchable": false}]})
+});
+</script>
+
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+  <h1><b> FRAUD DETECTION</b></h1>
+  <p><b>A demo made by  on industry for evaluation purposes only.</b></p>
+
+</div>
+
+<p class="w3-section" style="width:30%; border: none; color: #FFFFFF;">space</p>
+  <div class="w3-section">
+      <p style="font-weight: bold; font-size:25px;">{{id_threshold}}</p>
+    <p style="font-weight: bold; font-size:25px;">{{id_threshold_value}}</p>
+  </div>
+    <div class="w3-section">
+    <fieldset class="container w3-center" style="width:900px; text-align:center;">
+  <legend style="text-align:right;">گزارش مقادیر استانه</legend>
+  <table class="w3-table w3-striped w3-bordered w3-centered w3-auto">
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        <th>مقادیر استانه</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+    <tbody>
+    {% if state_dailty=='MONTHLY' %}
+        <tr>
+            <td>0 سطر</td>
+            {% for url in list_result %}
+               <td>{{url}}</td>
+            {% endfor %}
+        </tr>
+    {% endif %}
+    {% if state_dailty=='WEEKLY' %}
+        <tr>
+            <td>0 سطر</td>
+            {% for url in list_result %}
+               <td>{{url}}</td>
+                {% if loop.index%6==0 %}
+                        </tr><tr>
+                        <td>{{(loop.index/6)|int}} سطر</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endif %}
+    {% if state_dailty=='DAILY' %}
+        <tr>
+            <td>0 سطر</td>
+            {% for url in list_result %}
+               <td>{{url}}</td>
+                {% if loop.index%7==0 %}
+                        </tr><tr>
+                        <td>{{(loop.index/7)|int}} سطر</td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+    {% endif %}
+    </tbody>
+  </table>
+</fieldset>
+
+  </div>
+
+<script src="/static/scripts/base_scripts.js"></script>
+<!-- Modal for full size images on click-->
+<!--<div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">-->
+<!--    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>-->
+<!--    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">-->
+<!--        <img id="img01" class="w3-image">-->
+<!--        <p id="caption"></p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--End Page Content    -->
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px">
+        <p class="w3-medium">Powered by</p>
+    <img src="https://avatars3.githubusercontent.com/u/25844347?s=280&v=4" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+    <img src="https://fanap.ir/images/fanap-logo.png" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+</footer>
+</body>
+</html>

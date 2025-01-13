@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<title> FRAUD DETECTION</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="/static/styles/base_style.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript"  src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+<!--<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>-->
+<!--<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+
+<head>
+	<title>Web Application</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ABOUT</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">CONTACT</a>
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1800px">
+
+
+<script>
+$(document).ready(function(){
+    $('#table_content_1').dataTable({"columns": [ {"searchable": true},{"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}, {"searchable": false}, {"searchable": false},
+    {"searchable": false}],
+    "scrollX": true,
+    "scrollY": 50});
+    $('.dataTables_length').addClass('bs-select');
+});
+
+$(document).ready(function(){
+    $('#table_content_2').dataTable({"columns": [ {"searchable": true},{"searchable": false},
+    {"searchable": false}, {"searchable": false}]})
+});
+</script>
+
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+  <h1><b> FRAUD DETECTION</b></h1>
+  <p><b>A demo made by  on industry for evaluation purposes only.</b></p>
+
+</div>
+
+<p class="w3-section" style="width:30%; border: none; color: #FFFFFF;">space</p>
+  <div class="w3-section">
+  <fieldset class="container w3-center" style="width:900px; text-align:center;">
+      <legend style="text-align:right;">گزارش کلی {{state_user}}</legend>
+      <table class="w3-table w3-striped w3-bordered w3-centered w3-auto table table-striped table-bordered table-sm" id="table_content_1" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th onclick="prt_rlt('RATIO_DAILY_INPUT_AMOUNT');">RATIO_DAILY_INPUT_AMOUNT</th>
+            <th onclick="prt_rlt('MAX_DAILY_INPUT_AMOUNT');" data-key="2">MAX_DAILY_INPUT_AMOUNT</th>
+            <th onclick="prt_rlt('RATIO_DAILY_INPUT_FREQ');" data-key="3">RATIO_DAILY_INPUT_FREQ</th>
+            <th onclick="prt_rlt('MAX_DAILY_INPUT_FREQ');" data-key="4">MAX_DAILY_INPUT_FREQ</th>
+            <th onclick="prt_rlt('RATIO_DAILY_OUTPUT_AMOUNT');" data-key="5">RATIO_DAILY_OUTPUT_AMOUNT</th>
+            <th onclick="prt_rlt('MAX_DAILY_OUTPUT_AMOUNT');" data-key="6">MAX_DAILY_OUTPUT_AMOUNT</th>
+            <th onclick="prt_rlt('RATIO_DAILY_OUTPUT_FREQ');" data-key="7">RATIO_DAILY_OUTPUT_FREQ</th>
+            <th onclick="prt_rlt('MAX_DAILY_OUTPUT_FREQ');" data-key="8">MAX_DAILY_OUTPUT_FREQ</th>
+            <th onclick="prt_rlt('RATIO_WEEKLY_INPUT_AMOUNT');" data-key="9">RATIO_WEEKLY_INPUT_AMOUNT</th>
+            <th onclick="prt_rlt('MAX_WEEKLY_INPUT_AMOUNT');" data-key="10">MAX_WEEKLY_INPUT_AMOUNT</th>
+            <th onclick="prt_rlt('RATIO_WEEKLY_INPUT_FREQ');" data-key="11">RATIO_WEEKLY_INPUT_FREQ</th>
+            <th onclick="prt_rlt('MAX_WEEKLY_INPUT_FREQ');" data-key="12">MAX_WEEKLY_INPUT_FREQ</th>
+            <th onclick="prt_rlt('RATIO_WEEKLY_OUTPUT_AMOUNT');" data-key="13">RATIO_WEEKLY_OUTPUT_AMOUNT</th>
+            <th onclick="prt_rlt('MAX_WEEKLY_OUTPUT_AMOUNT');" data-key="14">MAX_WEEKLY_OUTPUT_AMOUNT</th>
+            <th onclick="prt_rlt('RATIO_WEEKLY_OUTPUT_FREQ');" data-key="15">RATIO_WEEKLY_OUTPUT_FREQ</th>
+            <th onclick="prt_rlt('MAX_WEEKLY_OUTPUT_FREQ');" data-key="16">MAX_WEEKLY_OUTPUT_FREQ</th>
+            <th onclick="prt_rlt('RATIO_MONTHLY_INPUT_AMOUNT');" data-key="17">RATIO_MONTHLY_INPUT_AMOUNT</th>
+            <th onclick="prt_rlt('MAX_MONTHLY_INPUT_AMOUNT');" data-key="18">MAX_MONTHLY_INPUT_AMOUNT</th>
+            <th onclick="prt_rlt('RATIO_MONTHLY_INPUT_FREQ');" data-key="19">RATIO_MONTHLY_INPUT_FREQ</th>
+            <th onclick="prt_rlt('MAX_MONTHLY_INPUT_FREQ');" data-key="20">MAX_MONTHLY_INPUT_FREQ</th>
+            <th onclick="prt_rlt('RATIO_MONTHLY_OUTPUT_AMOUNT');" data-key="21">RATIO_MONTHLY_OUTPUT_AMOUNT</th>
+            <th onclick="prt_rlt('MAX_MONTHLY_OUTPUT_AMOUNT');" data-key="22">MAX_MONTHLY_OUTPUT_AMOUNT</th>
+            <th onclick="prt_rlt('RATIO_MONTHLY_OUTPUT_FREQ');" data-key="23">RATIO_MONTHLY_OUTPUT_FREQ</th>
+            <th onclick="prt_rlt('MAX_MONTHLY_OUTPUT_FREQ');" data-key="24">MAX_MONTHLY_OUTPUT_FREQ</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{final_dict_data['RATIO_DAILY_INPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['MAX_DAILY_INPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['RATIO_DAILY_INPUT_FREQ']}}</td>
+            <td>{{final_dict_data['MAX_DAILY_INPUT_FREQ']}}</td>
+            <td>{{final_dict_data['RATIO_DAILY_OUTPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['MAX_DAILY_OUTPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['RATIO_DAILY_OUTPUT_FREQ']}}</td>
+            <td>{{final_dict_data['MAX_DAILY_OUTPUT_FREQ']}}</td>
+            <td>{{final_dict_data['RATIO_WEEKLY_INPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['MAX_WEEKLY_INPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['RATIO_WEEKLY_INPUT_FREQ']}}</td>
+            <td>{{final_dict_data['MAX_WEEKLY_INPUT_FREQ']}}</td>
+            <td>{{final_dict_data['RATIO_WEEKLY_OUTPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['MAX_WEEKLY_OUTPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['RATIO_WEEKLY_OUTPUT_FREQ']}}</td>
+            <td>{{final_dict_data['MAX_WEEKLY_OUTPUT_FREQ']}}</td>
+            <td>{{final_dict_data['RATIO_MONTHLY_INPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['MAX_MONTHLY_INPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['RATIO_MONTHLY_INPUT_FREQ']}}</td>
+            <td>{{final_dict_data['MAX_MONTHLY_INPUT_FREQ']}}</td>
+            <td>{{final_dict_data['RATIO_MONTHLY_OUTPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['MAX_MONTHLY_OUTPUT_AMOUNT']}}</td>
+            <td>{{final_dict_data['RATIO_MONTHLY_OUTPUT_FREQ']}}</td>
+            <td>{{final_dict_data['MAX_MONTHLY_OUTPUT_FREQ']}}</td>
+        </tr>
+        </tbody>
+      </table>
+  </fieldset>
+
+
+
+    <fieldset class="container w3-center" style="width:900px; text-align:center;">
+  <legend style="text-align:right;">گزارش هفته جاری</legend>
+  <table class="w3-table w3-striped w3-bordered w3-centered w3-auto">
+    <thead>
+      <tr>
+        <th>مجموع مقادیر واریز</th>
+        <th>مجموع تعداد واریز</th>
+        <th>مجموع مقادیر برداشت</th>
+        <th>مجموع تعداد برداشت</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{current_week['sum_amt_bes']}}</td>
+        <td>{{current_week['sum_cnt_bes']}}</td>
+        <td>{{current_week['sum_amt_bed']}}</td>
+        <td>{{current_week['sum_cnt_bed']}}</td>
+    </tr>
+    </tbody>
+  </table>
+</fieldset>
+
+
+
+    <fieldset class="container w3-center" style="width:900px; text-align:center;">
+  <legend style="text-align:right;">گزارش ماه جاری</legend>
+  <table class="w3-table w3-striped w3-bordered w3-centered w3-auto">
+     <thead>
+      <tr>
+        <th>مجموع مقادیر واریز</th>
+        <th>مجموع تعداد واریز</th>
+        <th>مجموع مقادیر برداشت</th>
+        <th>مجموع تعداد برداشت</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{current_month['sum_amt_bes']}}</td>
+        <td>{{current_month['sum_cnt_bes']}}</td>
+        <td>{{current_month['sum_amt_bed']}}</td>
+        <td>{{current_month['sum_cnt_bed']}}</td>
+    </tr>
+    </tbody>
+  </table>
+</fieldset>
+
+
+    <fieldset class="container w3-center" style="width:900px; text-align:center;">
+  <legend style="text-align:right;">گزارش روز جاری</legend>
+  <table class="w3-table w3-striped w3-bordered w3-centered w3-auto">
+     <thead>
+      <tr>
+        <th>مجموع مقادیر واریز</th>
+        <th>مجموع تعداد واریز</th>
+        <th>مجموع مقادیر برداشت</th>
+        <th>مجموع تعداد برداشت</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{current_day['sum_amt_bes']}}</td>
+        <td>{{current_day['sum_cnt_bes']}}</td>
+        <td>{{current_day['sum_amt_bed']}}</td>
+        <td>{{current_day['sum_cnt_bed']}}</td>
+    </tr>
+    </tbody>
+  </table>
+</fieldset>
+
+      <form method="post" action="/state_report" enctype="multipart/form-data" class="w3-container">
+          <div class="w3-section">
+                  <div class="w3-section">
+                  <button id="submit3" type="submit" class="btn btn-primary w3-button w3-block w3-margin-bottom" style="width:13%; height:20; border: none; background-color: #008000;">بازنشانی</button>
+                  </div>
+          </div>
+      </form>
+
+  </div>
+
+<script src="/static/scripts/base_scripts.js"></script>
+<!-- Modal for full size images on click-->
+<!--<div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">-->
+<!--    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>-->
+<!--    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">-->
+<!--        <img id="img01" class="w3-image">-->
+<!--        <p id="caption"></p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--End Page Content    -->
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px">
+        <p class="w3-medium">Powered by</p>
+    <img src="https://avatars3.githubusercontent.com/u/25844347?s=280&v=4" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+    <img src="https://fanap.ir/images/fanap-logo.png" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+</footer>
+</body>
+</html>

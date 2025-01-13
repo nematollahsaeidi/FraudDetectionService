@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<title> FRAUD DETECTION</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/static/styles/base_style.css">
+<head>
+	<title>Web Application</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ABOUT</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">CONTACT</a>
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1800px">
+
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+  <h1><b> FRAUD DETECTION</b></h1>
+  <p><b>A demo made by  on industry for evaluation purposes only.</b></p>
+    <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+    <div class="w3-content" style="max-width:1500px">
+      <form method="post" action="/" enctype="multipart/form-data" class="w3-container">
+          <div class="w3-section">
+<!--                <label for="category_name">نام دسته</label><br>-->
+<!--                <input type="text" name="category_name" pattern="[a-zA-Zی-ا]" id="category_name" title="لطفا یک عبارت با حداقل 2 و حداکثر 10 حرف وارد کن" placeholder="برای مثال کربات" minlength="2" maxlength="10" style="text-align: center;" required>-->
+<!--          </div>-->
+<!--            <div class="w3-section">-->
+<!--                <label for="file1">فایل زیپ</label><br>-->
+<!--                <input type="file" name="file1" id="file1" autocomplete="off" class="w3-button w3-block w3-black w3-margin-bottom"-->
+<!--                       accept=".zip" onchange="">-->
+<!--              </div>-->
+<!--            <br><br>-->
+<!--        <button class="w3-button w3-block w3-black w3-margin-bottom" type="submit" onclick="alert1()">ارسال</button>-->
+<!--            <i class="fa fa-search fa-2x"></i>-->
+
+            <fieldset style="width:900px; height:200px; text-align:center;">
+                <legend style="text-align:right;">نوع کاربر</legend>
+                <table align="center" cellpadding = "6" class="center center_fix_weight">
+                    <tr>
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+                        <td><input type="image" id="users1" value="" formaction="/users1" formmethod="POST" src="/static/images/im7.jpg" alt="Submit" width="70" height="70"></td>
+                        <td><input type="image" value="" formaction="/users2" formmethod="POST" src="/static/images/im6.jpg" alt="Submit" width="70" height="70"></td>
+                        <td><input type="image" value="" formaction="/users3" formmethod="POST" src="/static/images/im2.png" alt="Submit" width="70" height="70"></td>
+                        <td><input type="image" value="" formaction="/users4" formmethod="POST" src="/static/images/im4.png" alt="Submit" width="70" height="70"></td>
+                        <td><input type="image" value="" formaction="/users5" formmethod="POST" src="/static/images/im1.png" alt="Submit" width="70" height="70"></td>
+                    </tr>
+                </table>
+            </fieldset>
+          </div>
+      </form>
+
+
+<!--                <table align="center" cellpadding = "6" class="center_fix_weight">-->
+<!--                    <tr>-->
+<!--                        <th><label for="user_id">شناسه کاربر</label></th>-->
+<!--                        <th>فایل</th>-->
+<!--                        <th>پیام</th>-->
+<!--                        <th>وضعیت</th>-->
+<!--                    </tr>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <td><input type="number" name="user_id" id="user_id" min="1" max="9999"></td>-->
+<!--                        <td></td>-->
+<!--                        <td></td>-->
+<!--                        <td></td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                </table>-->
+          <form method="post" action="/report" enctype="multipart/form-data" class="w3-container">
+              <div class="w3-section">
+              {% if flag_user %}
+                  <fieldset style="width:900px; height:200px; text-align:center;">
+                    <legend style="text-align:right;">سطح تراکنش</legend>
+                      <div class="w3-row-padding w3-section">
+                          <div class="w3-quarter">
+                              <label for="id1"><b>تعداد</b></label>
+                              <input class="w3-input" type="number" name="user_id" id="id1" min="1" max="9999999999" placeholder="1" required>
+                          </div>
+                          <div class="w3-quarter">
+                              <label for="id2"><b>پرداخت</b></label>
+                              <select class="w3-select" id="id2" name="user_id">
+                                  <option value="item">item</option>
+                                    <option value="item">item</option>
+                                    <option value="item">item</option>
+                                    <option value="item">item</option>
+                                    <option value="item">item</option>
+                                    <option value="item">item</option>
+                                    <option value="item">item</option>
+                                    <option value="item">item</option>
+                                  </select>
+                          </div>
+                          <div class="w3-quarter">
+                              <label for="id3"><b>ریال</b></label>
+                              <input class="w3-input" type="number" name="user_id" id="id3" min="1" max="9999999999" placeholder="قیمت از" style="text-align: right;" required>
+                          </div>
+                          <div class="w3-quarter">
+                              <label for="id3"><b>ریال</b></label>
+                              <input class="w3-input" type="number" name="user_id" id="id4" min="1" max="9999999999" placeholder="قیمت تا" style="text-align: right;" required>
+                          </div>
+                          <br><br>
+                          <button id="submit" type="submit" class="btn btn-primary w3-button w3-block w3-black w3-margin-bottom" style="background-color: #ff8000; border-color: #ff8000;" onclick="sendRequest();">ثبت</button>
+    <!--                  <i class="fa fa-search fa-2x"></i>-->
+                      </div>
+                  </fieldset>
+                  <script>
+                  function sendRequest() {
+                    var x = document.getElementById("id3").value;
+                    var y = document.getElementById("id4").value;
+                    if (y < x)
+                    {
+                        alert("قیمت اولیه باید از قیمت ثانویه کمتر باشد");
+                    }
+                  }
+                  </script>
+</div>
+                  <div class="w3-section">
+                  <fieldset style="width:900px; height:200px; text-align:center;">
+                      <legend style="text-align:right;">گزارش پرداخت</legend>
+                      <table class="w3-table w3-striped w3-bordered w3-centered w3-auto" id="table_content">
+        <!--              <table class="center center_fix_weight">-->
+                        <thead>
+                          <tr>
+                            <th>قانون</th>
+                            <th>توضیح</th>
+                            <th>ایکن</th>
+                            <th>نوع</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for row in output_message %}
+                        <tr>
+                            <td>{{row['kind']}}</td>
+                            <td>{{row['role']}}</td>
+                            <td><img src="static/uploads/{{ filename_c }}" alt="{{filename_c}}" style=""></td>
+                            <td>{{row['exp']}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                          <tfoot>
+                            <tr>
+                                <th>قانون</th>
+                                <th>توضیح</th>
+                                <th>ایکن</th>
+                                <th>نوع</th>
+                            </tr>
+                          </tfoot>
+                    </table>
+                  </fieldset>
+                  </div>
+
+              {% endif %}
+          </form>
+
+<!--                <table align="center" cellpadding = "6" class="center center_fix_weight">-->
+<!--                <tr>-->
+<!--                                        <tr>-->
+<!--                        <td>MOBILE NUMBER</td>-->
+<!--                        <td><input type="text" name="Mobile_Number" maxlength="10"/></td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>GENDER</td>-->
+<!--                        <td>Male <input type="radio" name="Gender" value="Male" />-->
+<!--                            Female <input type="radio" name="Gender" value="Female" />-->
+<!--                            Transgender <input type="radio" name="Gender" value="Transgender" />-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>COUNTRY</td>-->
+<!--                        <td><input type="text" name="Country" value="India" readonly="readonly" /></td>-->
+<!--                    </tr>-->
+<!--                    <td>HOBBIES <br /><br /><br /></td>-->
+<!--                    <td>Writing<input type="checkbox" name="Hobby_1" value="Writing" />-->
+<!--                        Sketching-->
+<!--                        <input type="checkbox" name="Hobby_2" value="Designing" />-->
+<!--                        Designing<input type="checkbox" name="Hobby_3" value="Cooking" />-->
+<!--                        <br />-->
+<!--                        Others-->
+<!--                        <input type="checkbox" name="Hobby_4" value="Other">-->
+<!--                        <input type="text" name="Other_Hobby" maxlength="30" />-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Percentage</td>-->
+<!--                    <td><input type="text" name="percentage"/ maxlength="2" placeholder="marks in %"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td colspan="4" align="center">-->
+<!--                        <input type="submit" value="Submit">-->
+<!--                        <input type="reset" value="Reset">-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--            </table>-->
+<!--                </fieldset>-->
+<!--        </form>-->
+
+        {% if flag %}
+            <p style="font-family: B Nazanin; font-weight: bold; font-size:25px;"> نتایج </p>
+            <p style="font-family: B Nazanin; font-weight: bold; color: red; font-size:15px;"> فرمت فایل باید از نوع زیپ باشد </p>
+        {% elif uploaded_url %}
+            <p style="font-weight: bold; font-size:25px;"> نتایج </p>
+        {% if flag_zip %}
+        <p style="font-family: B Nazanin; font-weight: bold; font-size:25px;"> نتایج فایل زیپ ارسالی </p>
+            <table class="center center_fix_weight">
+                <tr>
+                    <th>نام دسته</th>
+                    <th>فایل</th>
+                    <th>پیام</th>
+                    <th>وضعیت</th>
+                </tr>
+                <tbody>
+                {% for row in output_message_zip %}
+                <tr>
+                    <td>{{category_name}}</td>
+                    <td>{{row['filename']}}</td>
+                    <td>{{row['message']}}</td>
+                    <td>{{row['status']}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        {% endif %}
+    </div>
+    </div>
+</div>
+
+<script src="/static/scripts/base_scripts.js"></script>
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px">
+        <p class="w3-medium">Powered by</p>
+    <img src="https://avatars3.githubusercontent.com/u/25844347?s=280&v=4" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+    <img src="https://fanap.ir/images/fanap-logo.png" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+</footer>
+</body>
+</html>

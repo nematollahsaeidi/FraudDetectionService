@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<title> Object Detection</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/static/styles/base_style.css">
+<head>
+	<title>Web Application</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ABOUT</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">CONTACT</a>
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1800px">
+
+
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+  <h1><b>Object Detection</b></h1>
+    <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+        <div class="w3-content" style="max-width:1500px">
+      <form method="post" action="/detection" enctype="multipart/form-data">
+      	<div class="w3-section">
+      		<input type="file" name="file" autocomplete="off" class="w3-button w3-block w3-black w3-margin-bottom" required>
+        </div>
+        <button class="w3-button w3-block w3-black w3-margin-bottom" type="submit">Submit</button>
+      </form>
+    </div>
+    </div>
+</div>
+
+{% if image_detect %}
+    {% set color = ['#FF1493', '#3CB371', '#800000', '#FFA500', '#DEB887', '#0000CD', '#808000', '#808080', '#7FFF00',
+'#2F4F4F', '#00FFFF', '#1E90FF', '#000000', '#FFFF00', '#8B008B', '#191970', '#008000', '#006400', '#A0522D',
+'#00FF7F', '#ADFF2F', '#FA8072', '#F4A460', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A',
+'#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF',
+'#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33',
+'#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
+%}
+
+<p style="font-weight: bold; font-size:25px;"> Main Image </p>
+
+<div class="wrapper" style="width:{{image_shape[1]}}px; height:{{image_shape[0]}}px;position:relative;padding-left: 0px; padding-top: 0px; max-width: none;" >
+	<img src="static/uploads/{{ filename }}" alt="{{filename}}" style="width:100%;height:100%;position:relative;
+	padding-left: 0px;padding-top: 0px; ">
+    {% for i in image_detect['boxes'] %}
+		<div class="tooltip" id={{loop.index-1}} style="
+		width:{{i[2]}}px; height:{{i[3]}}px;
+		padding-left: 0px; padding-top: 0px;
+		border:2px solid {{ color[loop.index] }}; border-radius: 10px;
+		position:absolute;
+		top:{{i[1]}}px;
+		left:{{i[0]}}px;
+        cursor: pointer;" onclick=myFunction(this.id);>
+			<span class="tooltiptext" style="font-weight: bold; font-size:20px;">{{ image_detect['class_ids'][loop.index-1] }}</span>
+<!--            class="tooltiptext"-->
+		</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+
+{% if image_detect %}
+
+    <p style="font-weight: bold; font-size:25px;"> Cropable Image </p>
+
+    <div class="wrapper"style="width:{{image_shape[1]}}px; height:{{image_shape[0]}}px;position:relative;padding-left: 0px; padding-top: 0px; max-width: none;" >
+    <img src="static/uploads/{{ filename }}" alt="{{filename}}" style="width:100%;height:100%;position:relative;
+    padding-left: 0px;padding-top: 0px; " id="target">
+    <form method="post" action="/detection" enctype="multipart/form-data">
+        <div class="w3-section">
+            <div class="inline-labels">
+                <input type="Hidden" id="x1" name="x1" required/>
+                <input type="Hidden" id="y1" name="y1" />
+                <input type="Hidden" id="x2" name="x2" />
+                <input type="Hidden" id="y2" name="y2" />
+                <input type="Hidden" id="w" name="w" />
+                <input type="Hidden" id="h" name="h" />
+            </div>
+            <button class="w3-button w3-block w3-black w3-margin-bottom" id="submit_crop" onclick="alarm_field_empty()" type="submit">Crop</button>
+            <script type="text/javascript">
+            function alarm_field_empty(){
+            var file = document.getElementById("x1").value;
+            if (!file){
+                alert("Please crop the image!");
+                }
+            }
+            </script>
+        </div>
+    </form>
+    </div>
+
+{% endif %}
+
+<br><br>
+
+<script src="../static/scripts/jquery.min.js"></script>
+<script src="../static/scripts/jquery.Jcrop.js"></script>
+<script type="text/javascript">
+
+jQuery(function($){
+
+var jcrop_api;
+
+$('#target').Jcrop({
+  onChange:   showCoords,
+  onSelect:   showCoords,
+  onRelease:  clearCoords
+},function(){
+  jcrop_api = this;
+});
+
+$('#coords').on('change','input',function(e){
+  var x1 = $('#x1').val(),
+      x2 = $('#x2').val(),
+      y1 = $('#y1').val(),
+      y2 = $('#y2').val();
+  jcrop_api.setSelect([x1,y1,x2,y2]);
+});
+
+});
+
+function showCoords(c)
+{
+$('#x1').val(c.x);
+$('#y1').val(c.y);
+$('#x2').val(c.x2);
+$('#y2').val(c.y2);
+$('#w').val(c.w);
+$('#h').val(c.h);
+};
+
+function clearCoords()
+{
+$('#coords input').val('');
+};
+</script>
+<link rel="stylesheet" href="/static/styles/jquery.Jcrop.css" type="text/css" />
+
+{% if bounding_box_detect %}
+{% if crop %}
+    {% set color = ['#FF1493', '#3CB371', '#800000', '#FFA500', '#DEB887', '#0000CD', '#808000', '#808080', '#7FFF00',
+'#2F4F4F', '#00FFFF', '#1E90FF', '#000000', '#FFFF00', '#8B008B', '#191970', '#008000', '#006400', '#A0522D',
+'#00FF7F', '#ADFF2F', '#FA8072', '#F4A460', '#80B300', '#809900', '#E6B3B3', '#6680B3', '#66991A', '#FF99E6', '#CCFF1A',
+'#FF1A66', '#E6331A', '#33FFCC', '#66994D', '#B366CC', '#4D8000', '#B33300', '#CC80CC', '#66664D', '#991AFF', '#E666FF',
+'#4DB3FF', '#1AB399', '#E666B3', '#33991A', '#CC9999', '#B3B31A', '#00E680', '#4D8066', '#809980', '#E6FF80', '#1AFF33',
+'#999933', '#FF3380', '#CCCC00', '#66E64D', '#4D80CC', '#9900B3', '#E64D66', '#4DB380', '#FF4D4D', '#99E6E6', '#6666FF']
+%}
+
+<p style="font-weight: bold; font-size:25px;"> Cropped Image </p>
+
+<div class="wrapper" style="width:{{image_shape_c[1]}}px; height:{{image_shape_c[0]}}px;position:relative;padding-left: 0px; padding-top: 0px; max-width: none;" >
+	<img src="static/uploads/{{ filename_c }}" alt="{{filename_c}}" style="width:100%;height:100%;position:relative;
+	padding-left: 0px;padding-top: 0px; ">
+    {% for i in image_detect_c['boxes_c'] %}
+		<div class="tooltip" id={{loop.index-1}} style="
+		width:{{i[2]}}px; height:{{i[3]}}px;
+		padding-left: 0px; padding-top: 0px;
+		border:2px solid {{ color[loop.index] }}; border-radius: 10px;
+		position:absolute;
+		top:{{i[1]}}px;
+		left:{{i[0]}}px;
+        cursor: pointer;" onclick=myFunction(this.id);>
+			<span class="tooltiptext">{{ image_detect_c['class_ids_c'][loop.index-1] }}</span>
+		</div>
+	{% endfor %}
+</div>
+{% endif %}
+{% endif %}
+
+</div>
+<!--{% if class_ids %}-->
+<!--    <div class="w3-section">-->
+<!--    <p style="font-weight: bold; font-size:20px;"> نتایج </p>-->
+<!--    <table class="center">-->
+<!--      <tr>-->
+<!--          <th>class_id</th>-->
+<!--        <th>box</th>-->
+<!--      </tr>-->
+<!--		<tbody>-->
+<!--		{% for row in class_ids %}-->
+<!--			<tr>-->
+<!--              <td>{{class_ids[loop.index-1]}}</td>-->
+<!--              <td>{{boxes[loop.index-1]}}</td>-->
+<!--			</tr>-->
+<!--		{% endfor %}-->
+<!--		</tbody>-->
+<!--	</table>-->
+<!--    </div>-->
+<!--{% endif %}-->
+
+<br><br>
+{% if crop_alarm %}
+{% if bounding_box_detect %}
+{% if info %}
+    {% if crop %}
+         <p style="font-weight: bold; font-size:25px;"> Best Class is {{best_class}} </p>
+    {% endif %}
+    <p style="font-weight: bold; font-size:25px;"> Model Result </p>
+    <table class="center">
+        <tbody>
+        <tr>
+            {% for url in info[models[0]] %}
+            <td>
+<!--                <img src="{{ url_for('app_blueprint.display_images', filename=url) }}" onclick="onClick(this)" alt="{{url}}" width="250" height="250">-->
+                <img src="{{ url }}" onclick="onClick(this)" alt="{{url}}" width="250" height="250">
+			</td>
+            {% if loop.index%5==0 %}
+        </tr><tr>
+            {% endif %}
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
+{% endif %}
+{% endif %}
+{% endif %}
+
+<script src="/static/scripts/base_scripts.js"></script>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+<!-- End Page Content -->
+
+
+<!--&lt;!&ndash; Testimonials &ndash;&gt;-->
+<!--<div class="w3-center" id="about">-->
+<!--    <h3 class="w3-padding-24 w3-xlarge w3-margin-right">Core Contributors</h3>-->
+<!--    <img src="https://pps.whatsapp.net/v/t61.24694-24/68281347_378311296429162_2693468188544335872_n.jpg?oh=902661222a0e00c6d4ecb7f6e4b8bea9&oe=5F42AAA6" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">-->
+<!--    <p><span class="w3-large w3-margin-right">Nemat Saeedi</span></p>-->
+<!--    <p> Machine Learning Engineer @ </p>-->
+<!--    <br>-->
+<!--</div>-->
+
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px">
+    <p class="w3-medium">Powered by</p>
+    <img src="https://avatars3.githubusercontent.com/u/25844347?s=280&v=4" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+    <img src="https://fanap.ir/images/fanap-logo.png" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+</footer>
+</body>
+</html>

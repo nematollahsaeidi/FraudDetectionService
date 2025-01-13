@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<title> FRAUD DETECTION</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="/static/styles/base_style.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript"  src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"  src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+<!--<script type="text/javascript"  src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>-->
+<!--<script type="text/javascript"  src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+
+<head>
+	<title>Web Application</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+
+<body>
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-animate-right w3-top w3-text-light-grey w3-large" style="z-index:3;width:250px;font-weight:bold;display:none;right:0;" id="mySidebar">
+  <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">ABOUT</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-16">CONTACT</a>
+</nav>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1800px">
+
+
+<script>
+$(document).ready(function(){
+    $('#table_content').dataTable({"columns": [ {"searchable": true},{"searchable": false},
+    {"searchable": false}, {"searchable": false}]})
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('#id2').change(function() {
+    $("#id3").prop('disabled', $(this).val() == 3);//will disable if current value is equals to 3
+<!--    $("#id4").prop('disabled', $(this).val() == 3);//will disable if current value is equals to 3-->
+
+    $("#id3").prop('disabled', $('#id1').val() == 1);//will disable if current value is equals to 1
+<!--    $("#id4").prop('disabled', $('#id1').val() == 1);//will disable if current value is equals to 1-->
+
+<!--    if ($("#id2").val() == 3)-->
+<!--    {-->
+<!--        $("#id3").prop('disabled');-->
+<!--        $("#id4").prop('disabled');-->
+<!--        $("#id3").attr("placeholder", "-")-->
+<!--        $("#id4").attr("placeholder", "-")-->
+<!--    }-->
+<!--    else if ($('#id1').val() != 1)-->
+<!--    {-->
+<!--        $("#id3").prop('disabled', false);-->
+<!--        $("#id4").prop('disabled', false);-->
+<!--        $("#id3").attr("placeholder", "ریال")-->
+<!--        $("#id4").attr("placeholder", "ریال")-->
+<!--    } else-->
+<!--    {-->
+<!--        $("#id3").prop('disabled');-->
+<!--        $("#id4").prop('disabled');-->
+<!--        $("#id3").attr("placeholder", "-")-->
+<!--        $("#id4").attr("placeholder", "-")-->
+<!--    }-->
+
+  }).change()
+
+  $('#id1').change(function() {
+    $("#id3").prop('disabled', $(this).val() == 1);//will disable if current value is equals to 1
+<!--    $("#id4").prop('disabled', $(this).val() == 1);//will disable if current value is equals to 1-->
+    if ($("#id3").is(':disabled'))
+    {
+        $("#id3").attr("placeholder", "-")
+<!--        $("#id4").attr("placeholder", "-")-->
+    }
+    else
+    {
+        $("#id3").attr("placeholder", "تومان")
+<!--        $("#id4").attr("placeholder", "ریال")-->
+    }
+    if ($("#id2").val() == 3)
+    {
+        $("#id3").prop('disabled', $("#id2").val() == 3);//will disable if current value is equals to 3
+<!--        $("#id4").prop('disabled', $("#id2").val() == 3);//will disable if current value is equals to 3-->
+        $("#id3").attr("placeholder", "-")
+<!--        $("#id4").attr("placeholder", "-")-->
+    }
+<!--    if ($("#id2").val() == 3)-->
+<!--    {-->
+<!--        $("#id3").prop('disabled');-->
+<!--        $("#id4").prop('disabled');-->
+<!--        $("#id3").attr("placeholder", "-")-->
+<!--        $("#id4").attr("placeholder", "-")-->
+<!--    }-->
+  }).change()
+});
+</script>
+
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+  <h1><b> FRAUD DETECTION</b></h1>
+  <p><b>A demo made by  on industry for evaluation purposes only.</b></p>
+    <div class="w3-container w3-light-grey w3-padding-32 w3-padding-large" id="contact">
+    <div class="w3-content" style="max-width:1500px">
+      <form method="post" action="/" enctype="multipart/form-data" class="w3-container">
+          <div class="w3-section">
+            <fieldset class="container w3-center" style="width:900px; height:240px; text-align:center;">
+                <legend style="text-align:right;">انتخاب نوع کاربر</legend>
+                <table align="center" cellpadding = "6" class="center center_fix_weight w3-table w3-striped w3-bordered w3-centered w3-auto">
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+<!--                        <td><input type="button" onchange="" value="click"></td>-->
+                    <tr>
+<!--                        <th><input type="image" id="users1" value="" formaction="/users1" formmethod="POST" src="/static/images/im3.png" alt="Submit" width="122" height="125"></th>-->
+                        <th><input type="image" id="users2" value="" formaction="/users2" formmethod="POST" src="/static/images/im6.png" alt="Submit" width="120" height="117"></th>
+                        <th><input type="image" id="users3" value="" formaction="/users3" formmethod="POST" src="/static/images/im222.png" alt="Submit" width="135" height="144"></th>
+                        <th><input type="image" id="users4" value="" formaction="/users4" formmethod="POST" src="/static/images/im4.png" alt="Submit" width="130" height="120"></th>
+                        <th><input type="image" id="users5" value="" formaction="/users5" formmethod="POST" src="/static/images/im333.png" alt="Submit" width="155" height="139"></th>
+                    </tr>
+                    <tr>
+<!--                        <td><label for="users5"><b>عمده فروش</b></label></td>-->
+                        <td><label for="users4"><b>فروشگاه اینترنتی</b></label></td>
+                        <td><label for="users3"><b>خرده فروش</b></label></td>
+                        <td><label for="users2"><b>کارمند</b></label></td>
+                        <td><label for="users5"><b>سازمان</b></label></td>
+                    </tr>
+                </table>
+            </fieldset>
+          </div>
+      </form>
+        {% if flag_user %}
+        <form method="post" action="/state_report" enctype="multipart/form-data" class="w3-container" target="_blank">
+          <div class="w3-section">
+                  <div class="w3-section">
+                  <button id="submit2" type="submit" class="btn btn-primary w3-button w3-block w3-margin-bottom" style="width:13%; height:20; border: none; background-color: #008000;">مشاهده سابقه {{state_user}} </button>
+                  </div>
+          </div>
+      </form>
+        {% endif %}
+    </div>
+    </div>
+</div>
+
+<!--    <div class="container">-->
+<!--        <div class="container w3-center">hbibu</div>-->
+<!--                      <fieldset class="container w3-center" style="width:900px; height:170px; text-align:center;">-->
+<!--                <legend style="text-/align:right;">سطح تراکنش</legend>-->
+<!--                      </fieldset>-->
+
+<!--    </div>-->
+
+{% if flag_user %}
+    <form method="post" action="/report" enctype="multipart/form-data" class="w3-container">
+      <div class="w3-section">
+          <fieldset class="container w3-center" style="width:900px; height:170px; text-align:center;">
+            <legend style="text-align:right;">ثبت تراکنش</legend>
+              <div class="w3-row-padding w3-section">
+                  <div class="w3-quarter">
+                      <label for="id1"><b>تعداد</b></label>
+                      <input class="w3-input" type="number" name="id1" value="1" id="id1" min="1" max="9999999999" placeholder="1" style="text-align: center;">
+                  </div>
+                  <div class="w3-quarter">
+                      <label for="id2"><b>پرداخت</b></label>
+                      <select class="w3-select" id="id2" name="id2">
+                            <option value="1">برداشت</option>
+                            <option value="2">واریز</option>
+<!--                            <option value="3">مانده گیری</option>-->
+<!--                            <option value="4">قسط</option>-->
+<!--                            <option value="5">برگشت</option>-->
+<!--                            <option value="6">کارت به کارت</option>-->
+                          </select>
+                  </div>
+                  <div class="w3-quarter">
+<!--                      <label for="id4" style="color:white"><b>ریال</b></label>-->
+<!--                      <input class="w3-input" type="number" name="id3" id="id4" min="1" max="9999999999" placeholder="تا" style="text-align: center;" required>-->
+                      <div class="w3-half">
+                      <label for="id3" style="color:white"><b>مبلغ</b></label>
+                      <input class="w3-input" type="number" name="id3" id="id3" min="1" max="9999999999" placeholder="تومان" style="text-align: center;" required>
+                      </div>
+                      <div class="w3-half">
+                          <label for="id6"><b>مبلغ</b></label>
+                          <label class="w3-input" id="id6" style="text-align: center;">تا</label>
+                      </div>
+                  </div>
+                  <div class="w3-quarter">
+                      <div class="w3-half">
+                      <label for="id4" style="color:white"><b>مبلغ</b></label>
+                      <input class="w3-input" type="number" name="id4" id="id4" min="1" max="9999999999" placeholder="تومان" style="text-align: center;" required>
+                      </div>
+                      <div class="w3-half">
+                          <label for="id9"><b>مبلغ</b></label>
+                          <label class="w3-input" id="id9" style="text-align: center;">از</label>
+                      </div>
+                  </div>
+<!--                  <div class="w3-quarter">-->
+<!--                      <label for="id4" style="text-align: right; display:block; height:43; width:20;"><b>ریال</b></label>-->
+<!--                      <input class="w3-input" type="number" name="id4" id="id4" min="1" max="9999999999" placeholder="از" style="text-align: center;" required>-->
+<!--                  </div>-->
+                  <p class="w3-section" style="width:30%; border: none; color: #FFFFFF;">space</p>
+                  <div class="w3-section">
+                  <button id="submit" type="submit" class="btn btn-primary w3-button w3-block w3-margin-bottom" style="width:10%; height:20; border: none; background-color: #008000;">ثبت</button>
+    <!--&lt;!&ndash;&lt;!&ndash;                  <i class="fa fa-search fa-2x"></i>&ndash;&gt;  border-color: #ff8000;&ndash;&gt; onclick="sendRequest();"-->
+                  </div>
+              </div>
+          </fieldset>
+      </div>
+        <p class="w3-section" style="width:30%; border: none; color: #FFFFFF;">space</p>
+        {% if flag_info %}
+        {% if err_price %}
+           <div class="w3-container w3-red">
+               <h6>{{ err_price }}</h6>
+           </div>
+        {% endif %}
+          <div class="w3-section">
+          <fieldset class="container w3-center" style="width:900px; text-align:center;">
+              <legend style="text-align:right;">گزارش</legend>
+              <table class="w3-table w3-striped w3-bordered w3-centered w3-auto" id="table_content">
+    <!--              <table class="center center_fix_weight">-->
+                <thead>
+                  <tr>
+                    <th>قانون</th>
+                    <th>وضعیت</th>
+                    <th> مقدار تومان</th>
+                    <th>نوع</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in output_message[0:quantity_sum] %}
+                <tr>
+                    {% if row['status'] %}
+    <!--                            <td><img src="static/images/{{ row['status'] }}" alt="{{row['status']}}" width="30" height="30"></td>-->
+                        <td>-</td>
+                        <td><img src="static/images/im18.jpeg" alt="18.jpeg" width="30" height="30"></td>
+                        <td>{{row['role']}}</td>
+                    {% else %}
+                        <td>{{row['kind']}}</td>
+                        <td><img src="static/images/im17.jpeg" alt="17.jpeg" width="30" height="30"></td>
+                    <td>{{row['role']}}</td>
+                    {% endif %}
+                    <td>{{row['exp']}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+<!--                  <tfoot>-->
+<!--                    <tr>-->
+<!--                        <th>قانون</th>-->
+<!--                        <th>مقدار</th>-->
+<!--                        <th></th>-->
+<!--                        <th>نوع</th>-->
+<!--                    </tr>-->
+<!--                  </tfoot>-->
+              </table>
+          </fieldset>
+          </div>
+        {% endif %}
+    </form>
+{% endif %}
+
+
+<script src="/static/scripts/base_scripts.js"></script>
+<!-- Modal for full size images on click-->
+<!--<div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">-->
+<!--    <span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>-->
+<!--    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">-->
+<!--        <img id="img01" class="w3-image">-->
+<!--        <p id="caption"></p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--End Page Content    -->
+</div>
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px">
+        <p class="w3-medium">Powered by</p>
+    <img src="https://avatars3.githubusercontent.com/u/25844347?s=280&v=4" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+    <img src="https://fanap.ir/images/fanap-logo.png" alt="Avatar" class="w3-circle w3-margin-right" style="width:80px">
+</footer>
+</body>
+</html>
